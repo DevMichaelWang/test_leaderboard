@@ -1,13 +1,14 @@
 
 import React from 'react'
 import Home from './screens/Home'
-import Context from './store/Context';
-import DataState from './store/DataState';
+import Context from './store/Context'
+import UserState from './store/UserState'
+import SearchState from './store/SearchState'
 
 
 const App = () => {
 
-    const store = { ...DataState() };
+    const store = { ...UserState(), ...SearchState() };
 
     return (
         <Context.Provider value={store}>

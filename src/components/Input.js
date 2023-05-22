@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     View,    
     TextInput,
     StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/dist/Ionicons';
+import Context from '../store/Context';
 
 const Input = () => {
 
+    const { username, setUserName } = useContext(Context);
     return (
         <View style={styles.container}>
             <Icon name="ios-search-outline" size={25} color="gray" />
-            <TextInput placeholder='User name...' style={styles.input} />
+            <TextInput 
+                value={username}
+                onChangeText = {text=>setUserName(text)}
+                placeholder='User name...' 
+                style={styles.input}
+            />
         </View>
     )
 }

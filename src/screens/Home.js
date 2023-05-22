@@ -13,61 +13,69 @@ import Context from '../store/Context';
 
 const Home = () => {
 
-    // const { value, setUserName } = useContext(Context);
+    const { username } = useContext(Context);  
+    const {data, searchUser} = useContext (Context);
 
-    const tableHead = ['Title1', 'Title2', 'Title3']
-    const tableData = [
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
-        ['1', '2', '3'],
-        ['a', 'b', 'c'],
-        ['1', '2', '456\n789'],
+    const search = () => {
+        searchUser (username);
+    }
+    
 
-    ]
+    const tableHead = ['Name', 'Rank', 'Number of bananas', 'isSearchedUser?'];
+    // const tableData = [
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    //     ['1', '2', '3'],
+    //     ['a', 'b', 'c'],
+    //     ['1', '2', '456\n789'],
+    // ]
 
     return (
         <View style={styles.container}>
             <View style={styles.toolContainer}>
                 <Input />
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress = {search}
+                >
                     <Text style={styles.buttonText}>SEARCH</Text>
                 </TouchableOpacity>
             </View>
             <ScrollView>
                 <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
                     <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-                    <Rows data={tableData} textStyle={styles.text} />
+                    <Rows data={data} textStyle={styles.text} />
                 </Table>
             </ScrollView>
         </View>
@@ -100,7 +108,7 @@ const styles = StyleSheet.create({
         fontSize: 16 
     },
     head: { 
-        height: 40, 
+        height: 60, 
         backgroundColor: '#f1f8ff' 
     },
     text: { margin: 6 }
