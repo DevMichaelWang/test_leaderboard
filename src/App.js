@@ -7,8 +7,8 @@ import DataState from './store/DataState';
 
 const App = () => {
 
-    const store = { ...DataState()};
-    
+    const store = { ...DataState() };
+
     return (
         <Context.Provider value={store}>
             <Home />
