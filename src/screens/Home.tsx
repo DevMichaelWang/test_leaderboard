@@ -8,13 +8,12 @@ import {
 import Input from '../components/Input';
 import React, { useContext } from 'react'
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
-import Context from '../store/Context';
-
+import {UserContext, SearchContext} from '../store/Context';
 
 const Home = () => {
 
-    const { username } = useContext(Context);
-    const { data, searchUser } = useContext(Context);
+    const { username } = useContext(UserContext);
+    const { data, searchUser } = useContext(SearchContext);
 
     const search = () => {
         searchUser(username);
